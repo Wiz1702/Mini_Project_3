@@ -1,48 +1,48 @@
-Mini-Project #3: Real-World RAG Implementation
+**Mini-Project #3: Real-World RAG Implementation**
 Due: Nov 12
+CAPB Report
 
+# **1. Project Context & Use Case**
 
-#1. Project Context & Use Case
-
-1.1 Problem / Context
+## **1.1 Problem / Context**
 
 Modern developers frequently switch between multiple programming languages and frameworks—such as **Python**, **JavaScript/React**, and **MATLAB**—for coursework, research, or software projects. Each ecosystem maintains its own documentation, often spread across large PDFs, web pages, or reference manuals. This fragmentation makes it inefficient for students and developers to quickly find correct function usage, code examples, or conceptual explanations.
 
 The objective of this project is to build a **Retrieval-Augmented Generation (RAG)** system that consolidates documentation across these languages into one unified assistant. This assistant allows users to ask natural-language questions like:
 
- “How do I read a file in Python?”
- “How do I use useState in React?”
- “How do I plot multiple lines in MATLAB?”
- “What’s the difference between Python lists and JavaScript arrays?”
+* “How do I read a file in Python?”
+* “How do I use useState in React?”
+* “How do I plot multiple lines in MATLAB?”
+* “What’s the difference between Python lists and JavaScript arrays?”
 
 The RAG system retrieves relevant chunks of documentation and uses an LLM to generate accurate, context-grounded answers with citations to the original sources.
 
 This addresses the information gap for students and developers who must constantly navigate between different languages and tools, offering a single intelligent assistant for multi-language programming help.
 
- **1.2 Primary Use Case**
+## **1.2 Primary Use Case**
 
-Selected: Other → Multi-Language Coding Documentation Assistant**
+**Selected: Other → Multi-Language Coding Documentation Assistant**
 
-Use Case Description:
+**Use Case Description:**
 The system serves as an AI-powered documentation lookup tool capable of answering technical questions across multiple programming ecosystems. Users interact conversationally to receive explanations, code snippets, and references grounded in official documentation. Instead of manually searching through separate sites for Python, MATLAB, or React, users get unified, consistent, contextual answers in one system.
 
-## 1.3 Users / Audience
+## **1.3 Users / Audience**
 
-* College students in CS, engineering, data science courses
-* Researchers who switch between MATLAB, Python, and JS analysis tools
-* Developers needing fast documentation lookup while coding
-* Teaching assistants wanting a fast reference tool to support common student questions
+* **College students** in CS, engineering, data science courses
+* **Researchers** who switch between MATLAB, Python, and JS analysis tools
+* **Developers** needing fast documentation lookup while coding
+* **Teaching assistants** wanting a fast reference tool to support common student questions
 
 These users benefit from having technical documentation centralized in a single assistant, enabling rapid retrieval of accurate function usage and examples.
 
-## 1.4 Success Criteria
+## **1.4 Success Criteria**
 
 We define measurable success criteria as:
 
-* Accuracy ≥ 80% on technical questions across languages
-* Citation rate ≥ 90% (answers include source snippets or doc names)
-* ≤ 5 sec latency per query for smooth interactivity
-* Correct language detection ≥ 90% (model answers in the intended language)
+* **Accuracy ≥ 80%** on technical questions across languages
+* **Citation rate ≥ 90%** (answers include source snippets or doc names)
+* **≤ 5 sec latency** per query for smooth interactivity
+* **Correct language detection ≥ 90%** (model answers in the intended language)
 
 ```yaml
 context:
@@ -58,9 +58,9 @@ context:
 
 ---
 
-# 2. Data & Constraints
+# **2. Data & Constraints**
 
- 2.1 Corpus Details
+## **2.1 Corpus Details**
 
 The corpus consists of curated excerpts from frequently used documentation sets:
 
@@ -93,7 +93,7 @@ The corpus consists of curated excerpts from frequently used documentation sets:
 * ~150–250 pages of text after extraction
 * Formats: **HTML converted to Markdown/TXT**, **PDF excerpts**, **MD cheat sheets**
 
-## 2.2 Constraints
+## **2.2 Constraints**
 
 * **Cloud vs Local:**
   Processing is cloud-enabled for convenience (LLM inference), but embeddings are computed locally for privacy and cost reasons.
@@ -125,6 +125,7 @@ data_constraints:
   security: "private user-added notes; public-code docs"
 ```
 
+---
 
 # **3. RAG Architecture (MVP)**
 
@@ -159,7 +160,7 @@ data_constraints:
 * **ChromaDB** storing embeddings + metadata
 * Persistent, lightweight, fast for small–medium corpora
 
-### 5. Retrieval
+### **5. Retrieval**
 
 * Vector similarity search (top-k = 5–7)
 * Metadata filtering based on detected language:
@@ -194,9 +195,9 @@ architecture_mvp:
   llm: "Hosted GPT model"
   citations: true
   rationale: "Reliable accuracy with simple, privacy-friendly components"
-``'
+```
 
-
+---
 
 # **4. Component Alternatives (Mini-Bakeoff)**
 
@@ -227,6 +228,7 @@ component_selection:
     reason: "Maintains documentation structure while keeping chunks uniform"
 ```
 
+---
 
 # **5. Evaluation Plan & Results**
 
@@ -330,7 +332,3 @@ improvements:
 * ChromaDB Developer Documentation
 * SentenceTransformers / InstructorXL Model Docs
 * RAG literature on best practices, hybrid search, and graph-based retrieval
-
----
-
-If you'd like, I can also generate a **PDF**, **slides**, or **.txt file** version of this report.
